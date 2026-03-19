@@ -54,6 +54,5 @@ public class Tache {
 	public void setStatut(String statut) {
 		this.statut = statut;
 	}
-	
-	
+
 }
