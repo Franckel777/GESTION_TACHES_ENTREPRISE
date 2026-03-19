@@ -8,7 +8,7 @@ public interface DAO<Tache> {
 
 	model.Tache get(int id) throws SQLException;
 
-	List<model.Tache> afficherTache(model.Tache tache) throws SQLException;
+	List<model.Tache> afficherTache() throws SQLException;
 
 	int ajouterTache(model.Tache tache) throws SQLException;
 
