@@ -84,6 +84,8 @@ public class TacheDAOImpl implements TacheDAO {
 		DatabaseConnection.closePreparedStatement(ps);
 		DatabaseConnection.closeConnection(con);
 		
+		System.out.println("Taches ajoutée avec succes!");
+		
 		return result;
 	}
 	
@@ -108,6 +110,8 @@ public class TacheDAOImpl implements TacheDAO {
 		DatabaseConnection.closePreparedStatement(ps);
 		DatabaseConnection.closeConnection(con);
 		
+		System.out.println("Taches modifiée avec succes!");
+		
 		return result;
 	}
 
@@ -125,7 +129,7 @@ public class TacheDAOImpl implements TacheDAO {
 		DatabaseConnection.closePreparedStatement(ps);
 		DatabaseConnection.closeConnection(con);
 		
-		System.out.println("Taches suprimee avec succes!");
+		System.out.println("Taches suprimée avec succes!");
 		return result;
 	}
 
