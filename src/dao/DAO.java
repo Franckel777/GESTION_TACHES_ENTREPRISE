@@ -4,6 +4,7 @@ import model.Tache;
 import java.sql.SQLException;
 import java.util.List;
 
+@SuppressWarnings("hiding")
 public interface DAO<Tache> {
 
 	model.Tache get(int id) throws SQLException;
