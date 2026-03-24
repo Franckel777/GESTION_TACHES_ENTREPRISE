@@ -1,13 +1,17 @@
-package model;
+package co.kozao.model;
 
+import co.kozao.enums.*;
 public class Tache {
 	private int id;
 	private String titre;
 	private String description;
 	private String responsable;
-	private String statut;
+	private Statut statut;
 
-	public Tache(int id, String titre, String description, String responsable, String statut) {
+	public Tache() {
+		
+	}
+	public Tache(int id, String titre, String description, String responsable, Statut statut) {
 		this.id = id;
 		this.titre = titre;
 		this.description = description;
@@ -19,7 +23,7 @@ public class Tache {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(int id) { 
 		this.id = id;
 	}
 
@@ -46,13 +50,20 @@ public class Tache {
 	public void setResponsable(String responsable) {
 		this.responsable = responsable;
 	}
-
-	public String getStatut() {
+ 
+	public Statut getStatut() {
 		return statut;
 	}
 
-	public void setStatut(String statut) {
+	public void setStatut(Statut statut) {
 		this.statut = statut;
 	}
+	
+	@Override
+	public String toString() {
+		return "Tache [id=" + id + ", titre=" + titre + ", description=" + description + ", responsable=" + responsable
+				+ ", statut=" + statut + "]";
+	}
 
+	
 }
