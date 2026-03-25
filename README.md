@@ -5,6 +5,39 @@
     en entreprise et conserve les donnees de telle sorte 
     qu'elles ne soient pas perdu.
     
+## Comment ça marche ⚙️?
+1. Telechargez et installez xampp en cliquant sur le lien dessous
+    ➡️https://www.apachefriends.org/download.html
+
+2. Ouvrez xampp et cliquez sur "Apache" et  "MySQL" jusqu'a ce qu'ils deviennent vert 🟩.
+
+3. Ouvrez votre IDE Java *(je vous recommande Eclipse)* et creez un nouveau proje java.
+
+4. Supprimez le fichier ***src*** qui s'y trouve et copiez celui ci, puis vous collez.
+
+5. Ouvrez phpMyAdmin                   
+    ➡️http://localhost/phpmyadmin
+
+6. Cliquez sur nouvelle base de donnees et nommer la "gestion_taches"
+
+7. Copiez le contenu du fichier src/database/gestion_taches.sql, allez dans votre base de donnes puis dans l'onglet **SQL** et collez.
+
+8. Appuyez sur le bouton **GO** juste en bas de votre code SQL
+
+9. Une fois la table creee, allez dans le fichier src/app/main.java et executer le.
+
+10. Maintenant vous pouvez utiliser votre programme 🙂‍↕️. 
+
+## LICENSE 📖
+Ceci est un programme entierement gratuit mais si jamais vous pouvez l'ameliorer, ne vous prions de le faire et de le contribuer a notre repo github. Cordialement.
+
+©Franckel_2026
+
+## A PROPOS ℹ️
+    Ceci est un programme permettant la bonne gestion des taches
+    en entreprise et conserve les donnees de telle sorte 
+    qu'elles ne soient pas perdu.
+    
 ## Pre-recquis
 a. Un serveur locale   
 b. Une IDE java   
