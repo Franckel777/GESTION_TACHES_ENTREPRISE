@@ -1,12 +1,12 @@
 package co.kozao.app;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 import co.kozao.dao.*;
 import co.kozao.model.Tache;
 import co.kozao.enums.*;
+
 public class Main {
 
 	public static void main(String[] args) throws SQLException {
@@ -26,7 +26,7 @@ public class Main {
 
 					int choix = sc.nextInt();
 					switch (choix) {
- 
+
 					case 1:
 						try {
 							System.out.print("Entrez le titre de la tache: ");
@@ -38,19 +38,19 @@ public class Main {
 
 							System.out.print("Quel est le nom de celui qui s'en charge? : ");
 							String responsable = sc.nextLine();
-							
+
 							int id = 0;
-							
-							tacheDAO.ajouterTache(id, titre, description, responsable); 
+
+							tacheDAO.ajouterTache(id, titre, description, responsable);
 
 						} catch (Exception e) {
 							System.out.println("Une ou plusieurs information(s) saisies est/sont incorrecte!");
 						}
- 
+
 						break;
 
 					case 2:
- 
+
 						List<Tache> taches = tacheDAO.afficherTache();
 
 						for (Tache t : taches) {
@@ -78,7 +78,8 @@ public class Main {
 								String status = sc.nextLine();
 								Statut statut = Statut.valueOf(status);
 
-								co.kozao.model.Tache tache = new co.kozao.model.Tache(id, titre, description, responsable, statut);
+								co.kozao.model.Tache tache = new co.kozao.model.Tache(id, titre, description,
+										responsable, statut);
 								tacheDAO.modifierTache(tache);
 							}
 
@@ -111,13 +112,6 @@ public class Main {
 					System.out.println("Entrez un choix valide!");
 				}
 
-			}
-
-			Connection con = co.kozao.database.DatabaseConnection.getConnection();
-			if (con != null) {
-				System.out.println("La base de données a ete connectée avec succes");
-			} else {
-				System.out.println("La base de données n'a pas ete connectée!");
 			}
 
 		} catch (Exception e) {

@@ -6,15 +6,19 @@ import java.util.*;
 import co.kozao.database.DatabaseConnection;
 import co.kozao.model.Tache;
 import co.kozao.enums.*;
+
 public class TacheDAOImpl implements TacheDAO {
-	
-	 static TacheDAOImpl tacheDAO = new TacheDAOImpl();
-	
+
+	static TacheDAOImpl tacheDAO;
+
 	private TacheDAOImpl() {
-		
+
 	}
-	
+
 	public static TacheDAOImpl getInstance() {
+		if (tacheDAO == null) {
+			tacheDAO = new TacheDAOImpl();
+		}
 		return tacheDAO;
 	}
 
@@ -25,16 +29,18 @@ public class TacheDAOImpl implements TacheDAO {
 		String sql = "SELECT id,titre,description,responsable,statut FROM taches WHERE id = ?";
 
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, id); 
- 
+		ps.setInt(1, id);
+
 		ResultSet rs = ps.executeQuery();
 
 		if (rs.next()) {
 			int Id = rs.getInt("id");
 			String Titre = rs.getString("titre");
-			String Description = rs.getString("description"); 
+			String Description = rs.getString("description");
 			String Responsable = rs.getString("responsable");
-			Statut statut = Statut.valueOf(rs.getString("statut")); //rs.getString prend la valeur du string contenu dans la variable de type enum statut, Statut.valueOf converti cela en enum
+			Statut statut = Statut.valueOf(rs.getString("statut")); // rs.getString prend la valeur du string contenu
+																	// dans la variable de type enum statut,
+																	// Statut.valueOf converti cela en enum
 
 			tache = new Tache(Id, Titre, Description, Responsable, statut);
 		} else {
@@ -76,25 +82,24 @@ public class TacheDAOImpl implements TacheDAO {
 		}
 
 		rs.close();
-		//ps.close();
+		// ps.close();
 		System.out.println("Le nombre de tache non terminee est de " + count);
-		//connection.close();
+		// connection.close();
 		DatabaseConnection.closePreparedStatement(ps);
 		DatabaseConnection.closeConnection(connection);
 		return liste;
 	}
 
 	@Override
-	public int ajouterTache(Tache tache) throws SQLException { 
+	public int ajouterTache(Tache tache) throws SQLException {
 		Connection con = DatabaseConnection.getConnection();
 		String sql = "INSERT INTO taches(titre, description, responsable, statut) VALUES (?, ?, ?, 'A_FAIRE')";
 
 		PreparedStatement ps = con.prepareStatement(sql);
- 
+
 		ps.setString(1, tache.getTitre());
 		ps.setString(2, tache.getDescription());
 		ps.setString(3, tache.getResponsable());
-		
 
 		int result = ps.executeUpdate();
 
@@ -105,11 +110,12 @@ public class TacheDAOImpl implements TacheDAO {
 
 		return result;
 	}
+
 	public void ajouterTache(int id, String titre, String description, String responsable) throws SQLException {
 		Tache tache = new Tache(id, titre, description, responsable, Statut.A_FAIRE);
 		ajouterTache(tache);
 	}
- 
+
 	@Override
 	public int modifierTache(Tache tache) throws SQLException {
 		Connection con = DatabaseConnection.getConnection();
@@ -148,5 +154,5 @@ public class TacheDAOImpl implements TacheDAO {
 		System.out.println("Taches suprimée avec succes!");
 		return result;
 	}
-	
+
 }
